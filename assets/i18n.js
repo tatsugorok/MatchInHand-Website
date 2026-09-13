@@ -74,8 +74,9 @@
     ['What happens when regular time ends level?','Que se passe-t-il en cas d’égalité ?','¿Qué ocurre si el tiempo reglamentario termina en empate?','Cosa succede in caso di pareggio?','Was geschieht bei Gleichstand nach regulärer Spielzeit?']
   ]);
 
-  const languages = ['en','fr','es','it','de'];
+  const languages = ['en','fr','es','it','de','ja'];
   const dictionaries = Object.fromEntries(languages.map((lang, index) => [lang, Object.fromEntries(rows.map(row => [row[0], row[index]]))]));
+  dictionaries.ja = window.MIH_JA;
   const saved = localStorage.getItem('mih-language');
   let language = languages.includes(saved) ? saved : (languages.includes(navigator.language.slice(0,2)) ? navigator.language.slice(0,2) : 'en');
 
@@ -103,7 +104,7 @@
     document.querySelectorAll('[data-language-select]').forEach(select => { select.value = language; });
     translateTextNodes();
     const contact = document.body.dataset.page === 'contact';
-    const titles = { en: contact ? 'Contact | Match In Hand' : 'How to Play | Match In Hand', fr: contact ? 'Contact | Match In Hand' : 'Comment jouer | Match In Hand', es: contact ? 'Contacto | Match In Hand' : 'Cómo jugar | Match In Hand', it: contact ? 'Contatti | Match In Hand' : 'Come giocare | Match In Hand', de: contact ? 'Kontakt | Match In Hand' : 'Spielanleitung | Match In Hand' };
+    const titles = { en: contact ? 'Contact | Match In Hand' : 'How to Play | Match In Hand', fr: contact ? 'Contact | Match In Hand' : 'Comment jouer | Match In Hand', es: contact ? 'Contacto | Match In Hand' : 'Cómo jugar | Match In Hand', it: contact ? 'Contatti | Match In Hand' : 'Come giocare | Match In Hand', de: contact ? 'Kontakt | Match In Hand' : 'Spielanleitung | Match In Hand', ja: contact ? 'お問い合わせ | Match In Hand' : '遊び方 | Match In Hand' };
     document.title = titles[language];
     if (emit) document.dispatchEvent(new CustomEvent('mih:languagechange'));
   }
@@ -113,7 +114,8 @@
       fr: `<strong>${key} :</strong> jusqu’à ${defense} carte(s) Action Défense, ${midfield} Milieu et ${attack} Attaque.`,
       es: `<strong>${key}:</strong> hasta ${defense} carta(s) de Defensa, ${midfield} de Medio y ${attack} de Ataque.`,
       it: `<strong>${key}:</strong> fino a ${defense} carta/e Difesa, ${midfield} Centrocampo e ${attack} Attacco.`,
-      de: `<strong>${key}:</strong> bis zu ${defense} Verteidigungs-, ${midfield} Mittelfeld- und ${attack} Angriffs-Aktionskarte(n).`
+      de: `<strong>${key}:</strong> bis zu ${defense} Verteidigungs-, ${midfield} Mittelfeld- und ${attack} Angriffs-Aktionskarte(n).`,
+      ja: `<strong>${key}：</strong>ディフェンス${defense}枚、ミッドフィールド${midfield}枚、アタック${attack}枚までアクションカードをプレイできます。`
     };
     return templates[language];
   }
