@@ -12,7 +12,7 @@
   <link rel="icon" type="image/x-icon" href="assets/match-in-hand.ico">
   <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
+<body data-page="rules">
   <a class="skip-link" href="#main">Skip to the rules</a>
   <header class="site-header">
     <a class="wordmark wordmark-match" href="#top" aria-label="Match In Hand home">
@@ -23,15 +23,17 @@
       <a href="#setup">Setup</a>
       <a href="#turns">How to play</a>
       <a href="#cards">Cards</a>
+      <a href="contact/">Contact</a>
     </nav>
-    <a class="header-cta" href="assets/BoxToBox_RulesSheet_v2.2.pdf" download>Rulebook PDF</a>
+    <label class="language-picker"><span class="sr-only">Language</span><select data-language-select aria-label="Language"><option value="en">EN</option><option value="fr">FR</option><option value="es">ES</option><option value="it">IT</option><option value="de">DE</option></select></label>
+    <a class="header-cta" href="assets/MatchInHand_RulesSheet_v2.3.pdf" download>Rulebook PDF</a>
   </header>
 
   <main id="main">
     <section class="hero" id="top">
       <div class="hero-copy">
         <p class="eyebrow">The tactical football card battler</p>
-        <h1>Build your formation.<br><em>Win the midfield.</em><br>Score the winner.</h1>
+        <h1>Shape your team.<br><em>Draw and score.</em><br>Win the game.</h1>
         <p class="hero-lede">Set up five players, combine action cards and out-think your opponent across two quick-fire halves.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#quick-start">Learn the game</a>
@@ -251,13 +253,14 @@
     </section>
 
     <section class="download section">
-      <div><p class="eyebrow">Keep it pitch-side</p><h2>Download the official sheets</h2></div>
-      <div class="download-actions"><a class="button button-primary" href="assets/BoxToBox_RulesSheet_v2.2.pdf" download>Full rulebook</a><a class="button button-quiet" href="assets/BoxToBox_CardsList.pdf" download>Card list</a></div>
+      <div><p class="eyebrow">Keep it pitch-side</p><h2>Download the Rulebook</h2></div>
+      <div class="download-actions"><a class="button button-primary" href="assets/MatchInHand_RulesSheet_v2.3.pdf" download>Full rulebook</a></div>
     </section>
   </main>
 
-  <footer><a class="wordmark wordmark-match" href="#top"><span>MATCH</span><i>in</i><span>HAND</span></a><p>Tactical football. One card at a time.</p><span>© 2026 TJL</span></footer>
+  <footer><a class="wordmark wordmark-match" href="#top"><span>MATCH</span><i>in</i><span>HAND</span></a><span>© 2026 TJL Studio ltd.</span></footer>
 
+  <script src="assets/i18n.js"></script>
   <script src="assets/site.js"></script>
 </body>
 </html>

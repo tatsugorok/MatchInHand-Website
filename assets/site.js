@@ -4,7 +4,13 @@ const formations = {
   '2-1-2': [2, 1, 2], '2-2-1': [1, 2, 2], '1-2-2': [2, 2, 1],
   '3-1-1': [1, 1, 3], '1-3-1': [1, 3, 1], '1-1-3': [3, 1, 1]
 };
-const playerNames = ['TATSU', 'COCO', 'JO', 'THEO', 'ANDREA'];
+const players = [
+  { name: 'TATSU', number: 8 },
+  { name: 'DJOCARLO', number: 6 },
+  { name: 'MARIE', number: 21 },
+  { name: 'COCO', number: 10 },
+  { name: 'C', number: 15 }
+];
 
 function renderFormation(key) {
   const [attack, midfield, defense] = formations[key];
@@ -15,13 +21,18 @@ function renderFormation(key) {
     for (let i = 0; i < count; i += 1) {
       const player = document.createElement('span');
       player.className = 'player-token';
-      player.innerHTML = `<b>${playerNames[nameIndex].slice(0, 3)}</b><i>${[9, 8, 10, 19, 2][nameIndex]}</i>`;
+      player.innerHTML = `<b>${players[nameIndex].name}</b><i>${players[nameIndex].number}</i>`;
       row.append(player);
       nameIndex += 1;
     }
   });
-  document.getElementById('formation-note').innerHTML = `<strong>${key}:</strong> up to ${defense} Defense, ${midfield} Midfield and ${attack} Attack Action card${attack > 1 ? 's' : ''}.`;
+  document.getElementById('formation-note').innerHTML = window.MIH_I18N.formatFormation(key, defense, midfield, attack);
 }
+
+document.addEventListener('mih:languagechange', () => {
+  const active = document.querySelector('[data-formation][aria-pressed="true"]');
+  renderFormation(active ? active.dataset.formation : '2-1-2');
+});
 
 document.querySelectorAll('[data-formation]').forEach((button) => {
   button.addEventListener('click', () => {
